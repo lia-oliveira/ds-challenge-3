@@ -2,6 +2,7 @@ package com.oliveiralia.client_registration.entities;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,8 +23,10 @@ public class Client {
 	
 	private Double income;
 	
+	@Column(name = "birth_date")
 	private LocalDate birthDate;
 	
+	@Column(nullable = true)
 	private Integer children;
 	
 	public Client() {
