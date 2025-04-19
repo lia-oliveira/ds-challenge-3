@@ -1,0 +1,55 @@
+# Ignore arquivos e pastas do projeto "cadastro"
+
+# Diretórios de build do Maven
+client_registration/target/
+
+# Diretórios e arquivos específicos do Eclipse / Spring Tool Suite
+client_registration/.classpath
+client_registration/.project
+client_registration/.settings/
+
+# IntelliJ IDEA
+client_registration/.idea/
+client_registration/*.iml
+
+# VS Code
+.vscode/
+client_registration/.vscode/
+
+# Arquivos de log e temporários
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+*.orig
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# Configurações locais
+client_registration/.env
+client_registration/.env.*
+
+# Backup de arquivos
+*.~*
+
+# Arquivos de compilação ocultos do Java
+client_registration/bin/
+client_registration/build/
+
+# Cache de dependências (caso venha a usar gradle ou build wrapper)
+client_registration/.gradle/
+client_registration/build/
+
+# Arquivos de lock ou cache
+client_registration/.mvn/
+client_registration/mvnw
+client_registration/mvnw.cmd
+
+# Outras possíveis pastas geradas por builds ou IDEs
+client_registration/out/
