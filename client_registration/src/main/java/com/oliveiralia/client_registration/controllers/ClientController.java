@@ -38,11 +38,6 @@ public class ClientController {
 		return ResponseEntity.ok(dto);
 	}
 	
-	/*@PostMapping
-	public ClientDTO insert(@RequestBody ClientDTO dto) {		
-		return service.insert(dto);
-	}*/
-	
 	@PostMapping
 	public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO dto) {
 		dto = service.insert(dto);
