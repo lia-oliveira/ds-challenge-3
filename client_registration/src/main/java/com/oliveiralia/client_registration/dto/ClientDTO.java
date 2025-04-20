@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.oliveiralia.client_registration.entities.Client;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -28,11 +29,11 @@ public class ClientDTO implements Serializable{
 	@Positive(message = "The value must be positive.")
 	private Double income;
 	
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@PastOrPresent(message = "Birthdate must be in the past or present.")
 	private LocalDate birthDate;
 	
-	@Size(max = 2, message="Values ​​of maximum 2 digits.")
-	@Positive(message = "Positive values only")
+	@Positive(message = "Blank or positive values only")
 	private Integer children;
 	
 	public ClientDTO() {}
