@@ -1,5 +1,6 @@
 package com.oliveiralia.client_registration.entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -11,8 +12,10 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_client")
-public class Client {
+public class Client implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

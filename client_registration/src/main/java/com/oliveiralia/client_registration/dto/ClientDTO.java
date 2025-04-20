@@ -1,5 +1,6 @@
 package com.oliveiralia.client_registration.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -11,8 +12,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
-public class ClientDTO {
+public class ClientDTO implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Size(min = 3, max = 120, message = "Minimum of 3 and maximum of 120 characters.")
 	@NotBlank(message = "Required field.")
 	private String name;
@@ -29,6 +32,8 @@ public class ClientDTO {
 	@Size(max = 2, message="Values ​​of maximum 2 digits.")
 	@Positive(message = "Positive values only")
 	private Integer children;
+	
+	public ClientDTO() {}
 
 	public ClientDTO(Client entity) {
 		name = entity.getName();

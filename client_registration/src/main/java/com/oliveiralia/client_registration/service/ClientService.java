@@ -1,6 +1,5 @@
 package com.oliveiralia.client_registration.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,23 @@ public class ClientService {
 		ClientDTO dto = new ClientDTO(client);
 		return dto;
 	}
+	
+	@Transactional
+	public ClientDTO insert(ClientDTO dto) {
+		Client entity = new Client();
+		entity.setName(dto.getName());
+		entity.setCpf(dto.getCpf());
+		entity.setIncome(dto.getIncome());
+		entity.setBirthDate(dto.getBirthDate());
+		entity.setChildren(dto.getChildren());
+		
+		entity = repository.save(entity);
+		return new ClientDTO(entity);
+		
+	}
+	
+	
+	
 	
 	
 	
