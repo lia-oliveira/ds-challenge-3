@@ -64,12 +64,6 @@ public class ClientService {
 		entity = repository.save(entity);
 		return new ClientDTO(entity);
 		
-	}
-	
-	
-	
-	
-	
-	
+	}	
 
 }

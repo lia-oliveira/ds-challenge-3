@@ -15,7 +15,9 @@ import jakarta.validation.constraints.Size;
 public class ClientDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
+	
+	private Long id;
+	
 	@Size(min = 3, max = 120, message = "Minimum of 3 and maximum of 120 characters.")
 	@NotBlank(message = "Required field.")
 	private String name;
@@ -36,11 +38,16 @@ public class ClientDTO implements Serializable{
 	public ClientDTO() {}
 
 	public ClientDTO(Client entity) {
+		id = entity.getId();
 		name = entity.getName();
 		cpf = entity.getCpf();
 		income = entity.getIncome();
 		birthDate = entity.getBirthDate();
 		children = entity.getChildren();
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {
