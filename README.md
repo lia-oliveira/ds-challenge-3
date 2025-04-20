@@ -8,7 +8,7 @@ Status: Finalizado <br />
 
 # 👩🏼‍💻Sobre
 
-Repositório criado com a finalidade de entregar a proposta de solução do desafio do módulo API REST, camadas, CRUD, exceções, validações do curso [Java Spring Professional](https://devsuperior.com.br/curso-java-spring-professional) ministrado pelo professor Nélio Alves disponível na plataforma DevSuperior.
+Repositório criado com a finalidade de entregar a proposta de solução do desafio do módulo "API REST, camadas, CRUD, exceções, validações" do curso [Java Spring Professional](https://devsuperior.com.br/curso-java-spring-professional) ministrado pelo professor Nélio Alves e disponível na plataforma DevSuperior.
 
 # 🤖Tecnologias
 
@@ -34,7 +34,7 @@ Repositório criado com a finalidade de entregar a proposta de solução do desa
 
 # 🛠️ Recursos utilizados
 
-## Dump da base de dados
+## Seed da base de dados
 
 Os dados foram gerados com base no [gerador de pessoas](https://www.4devs.com.br/gerador_de_pessoas#google_vignette) do 4Devs.
 
