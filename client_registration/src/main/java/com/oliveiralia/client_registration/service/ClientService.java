@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.oliveiralia.client_registration.dto.ClientDTO;
 import com.oliveiralia.client_registration.entities.Client;
 import com.oliveiralia.client_registration.repositories.ClientRepository;
+import com.oliveiralia.client_registration.service.exceptions.ResourceNotFoundException;
 
 
 
@@ -26,12 +27,18 @@ public class ClientService {
 		return clients.map(x -> new ClientDTO(x));
 	} 
 	
-	@Transactional(readOnly = true)
+	/*@Transactional(readOnly = true)
 	public ClientDTO findById(Long id) {
 		Optional<Client> repo = repository.findById(id);
 		Client client = repo.get();
 		ClientDTO dto = new ClientDTO(client);
 		return dto;
+	}*/
+	
+	@Transactional(readOnly = true)
+	public ClientDTO findById(Long id) {
+		Client client = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Id not found"));
+		return new ClientDTO(client);		
 	}
 	
 	@Transactional
@@ -52,8 +59,7 @@ public class ClientService {
 		Client entity = repository.getReferenceById(id);
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
-		return new ClientDTO(entity);
-		
+		return new ClientDTO(entity);		
 	}
 
 	private void copyDtoToEntity(ClientDTO dto, Client entity) {
