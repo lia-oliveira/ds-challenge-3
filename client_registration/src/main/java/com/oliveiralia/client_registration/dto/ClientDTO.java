@@ -22,8 +22,9 @@ public class ClientDTO implements Serializable{
 	@Size(min = 3, max = 120, message = "Minimum of 3 and maximum of 120 characters.")
 	@NotBlank(message = "Required field.")
 	private String name;
-	
+		
 	@CPF(message = "Invalid CPF.")
+	@NotBlank(message = "Required field.")
 	private String cpf;
 	
 	@Positive(message = "The value must be positive.")
@@ -70,5 +71,4 @@ public class ClientDTO implements Serializable{
 	public Integer getChildren() {
 		return children;
 	}
-
 }
