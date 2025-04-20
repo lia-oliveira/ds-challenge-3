@@ -1,7 +1,5 @@
 package com.oliveiralia.client_registration.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +10,8 @@ import com.oliveiralia.client_registration.dto.ClientDTO;
 import com.oliveiralia.client_registration.entities.Client;
 import com.oliveiralia.client_registration.repositories.ClientRepository;
 import com.oliveiralia.client_registration.service.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 
 
@@ -26,14 +26,6 @@ public class ClientService {
 		Page<Client> clients = repository.findAll(pageable);
 		return clients.map(x -> new ClientDTO(x));
 	} 
-	
-	/*@Transactional(readOnly = true)
-	public ClientDTO findById(Long id) {
-		Optional<Client> repo = repository.findById(id);
-		Client client = repo.get();
-		ClientDTO dto = new ClientDTO(client);
-		return dto;
-	}*/
 	
 	@Transactional(readOnly = true)
 	public ClientDTO findById(Long id) {
@@ -56,10 +48,14 @@ public class ClientService {
 	
 	@Transactional
 	public ClientDTO update(Long id, ClientDTO dto) {
-		Client entity = repository.getReferenceById(id);
-		copyDtoToEntity(dto, entity);
-		entity = repository.save(entity);
-		return new ClientDTO(entity);		
+		try {
+			Client entity = repository.getReferenceById(id);
+			copyDtoToEntity(dto, entity);
+			entity = repository.save(entity);
+			return new ClientDTO(entity);			
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Id not found.");
+		}				
 	}
 
 	private void copyDtoToEntity(ClientDTO dto, Client entity) {
