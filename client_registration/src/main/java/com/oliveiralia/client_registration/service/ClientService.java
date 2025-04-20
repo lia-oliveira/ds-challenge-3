@@ -44,8 +44,12 @@ public class ClientService {
 		entity.setChildren(dto.getChildren());
 		
 		entity = repository.save(entity);
-		return new ClientDTO(entity);
-		
+		return new ClientDTO(entity);		
+	}
+	
+	@Transactional
+	public void delete(Long id) {
+		repository.deleteById(id);
 	}
 	
 	
